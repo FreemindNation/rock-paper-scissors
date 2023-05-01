@@ -1,1 +1,2 @@
 this project is a rock-paper-scissors game. the game will be coded in separate javaScript file which will then be linked to a main html file. more details will be added as i go along.
+the game comprises three separate functions. it currently has no GUI, that will be sorted at a later date.
