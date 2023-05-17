@@ -64,38 +64,6 @@ body.insertBefore(title, container);
 // }
 
 
-buttons.forEach(button => {
-    button.addEventListener("click", function () {
-        playRound(button.id, getComputerChoice());
-        // console.log(playRound(button.id, getComputerChoice()));
-        let result = playRound(button.id, getComputerChoice());
-        console.log(result);
-    
-
-        if (result === paperWin || result === rockWin || result === scissorsWin) {
-            player.textContent = `Player score: ${playerScore += 1}`
-            scoreMessage.textContent = `Nice! ${result}`;
-        }
-        else if(result === paperLoss || result === rockLoss || result === scissorsLoss) {
-            computer.textContent = `Computer score: ${computerScore += 1}`;
-            scoreMessage.textContent = `Oops! ${result}`;
-        }
-        else {
-            scoreMessage.textContent = `Oops! ${result}`;
-        }
-
-        if (playerScore === 5 ) {
-            winningMessage.textContent = "You Win! Congratulations!";
-            return;
-        }
-        else if(computer === 5) {
-            losingMessage.textContent = "Damn! you've just lost to a computer! haha!";
-        }
-    });
-});
-
-
-
 let playerScore = 0;
 let computerScore = 0;
 const score = document.createElement("div");
@@ -118,6 +86,46 @@ losingMessage.classList.add("end-message");
 body.appendChild(winningMessage);
 body.appendChild(losingMessage);
 
+
+buttons.forEach(button => {
+    button.addEventListener("click", function () {
+        playRound(button.id, getComputerChoice());
+        // console.log(playRound(button.id, getComputerChoice()));
+        let result = playRound(button.id, getComputerChoice());
+        console.log(result);
+    
+
+        if (result === paperWin || result === rockWin || result === scissorsWin) {
+            player.textContent = `Player score: ${playerScore += 1}`
+            scoreMessage.textContent = `Nice! ${result}`;
+        }
+        else if(result === paperLoss || result === rockLoss || result === scissorsLoss) {
+            computer.textContent = `Computer score: ${computerScore += 1}`;
+            scoreMessage.textContent = `Oops! ${result}`;
+        }
+        else {
+            scoreMessage.textContent = `Oops! ${result}`;
+        };
+
+        if (playerScore === 5 || computer === 5 ) {
+            winningMessage.textContent = "You Win! Congratulations!";
+            const reset = document.createElement("button");
+            reset.id = "reset";
+            reset. textContent = "Reset";
+            body.appendChild(reset);
+            reset.addEventListener("click", function() {
+                player.textContent = `Player score : ${0}`;
+                computer.textContent = `Computer score : ${0}`;
+                
+            });
+            
+        }
+       
+    });
+    
+});
+
+ 
 // playerSelection = "Rock";
 // console.log(playRound(prompt("rock, paper or scissors?"), computerSelection));
 
