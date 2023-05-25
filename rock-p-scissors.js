@@ -13,33 +13,7 @@ let rockWin = "You Win! Rock beats Scissors";
 let rockLoss = "You Lose! Rock is beaten by Paper";
 let scissorsWin = "You Win! Scissors beat Paper"; 
 let scissorsLoss = "You Lose! Scissors are beaten by Rock";
-let warning = "Please enter a valid selection";
 
-function playRound(playerSelection, computerSelection) {
-    
-    if(playerSelection === "paper" && computerSelection === "rock") {
-        return paperWin;
-    }
-    else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return paperLoss;
-    }
-    else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return rockWin;
-    }
-    else if (playerSelection === "rock" && computerSelection === "paper") {
-        return rockLoss;
-    }
-    else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return scissorsWin;
-    }
-    else if (playerSelection === "scissors" && computerSelection === "Rock") {
-        return scissorsLoss;
-    }
-    else {
-        return draw;
-    }
-    
-}
 
  const computerSelection = getComputerChoice();
 
@@ -52,18 +26,6 @@ const body = document.querySelector("body");
 body.insertBefore(title, container);
  
  
-
-
-
-// if(playRound(playerSelection, computerSelection) === rockWin ||
-//    playRound(playerSelection, computerSelection) === paperWin ||
-//    playRound(playerSelection, computerSelection) === scissorsWin) {
-
-//                 playerScore += 1;   
-//                 score  
-// }
-
-
 let playerScore = 0;
 let computerScore = 0;
 const score = document.createElement("div");
@@ -81,112 +43,86 @@ let scoreMessage = document.createElement("p");
 body.insertBefore(scoreMessage, score);
 const winningMessage = document.createElement("p");
 winningMessage.classList.add("end-message");
+winningMessage.textContent = "You win! Congratulations on saving mankind!";
 const losingMessage = document.createElement("p");
 losingMessage.classList.add("end-message");
-body.appendChild(winningMessage);
-body.appendChild(losingMessage);
+losingMessage.textContent = "Damn! you have just lost to a computer. Now mankind is doomed all because of you!";
 
+
+
+
+function playRound(playerSelection, computerSelection) {
+    
+    if(playerSelection === "paper" && computerSelection === "rock") {
+        player.textContent = `Player score: ${playerScore += 1}`;
+        scoreMessage.textContent = `Nice! ${paperWin}`;
+    }
+    else if (playerSelection === "paper" && computerSelection === "scissors") {
+        computer.textContent = `Computer score: ${computerScore += 1}`;
+        scoreMessage.textContent = `Oops! ${paperLoss}`;
+    }
+    else if (playerSelection === "rock" && computerSelection === "scissors") {
+        player.textContent = `Player score: ${playerScore += 1}`;
+        scoreMessage.textContent = `Nice! ${rockWin}`;
+    }
+    else if (playerSelection === "rock" && computerSelection === "paper") {
+        computer.textContent = `Computer score: ${computerScore += 1}`;
+        scoreMessage.textContent = `Oops! ${rockLoss}`;
+    }
+    else if (playerSelection === "scissors" && computerSelection === "paper") {
+        player.textContent = `Player score: ${playerScore += 1}`;
+        scoreMessage.textContent = `Nice! ${scissorsWin}`;
+    }
+    else if (playerSelection === "scissors" && computerSelection === "Rock") {
+        computer.textContent = `Computer score: ${computerScore += 1}`;
+        scoreMessage.textContent = `Oops! ${scissorsLoss}`;
+        
+    }
+    else {
+        scoreMessage.textContent = `Oops! ${draw}`
+        
+    }
+    
+}
+
+
+const modal = document.querySelector(".modal");
+const resetGame = document.querySelector(".reset-game");
+const overLay = document.querySelector(".overlay");
+
+function openModal() {
+    modal.classList.remove("hidden");
+    overLay.classList.remove("hidden");
+}
+
+function closeModal() {
+    modal.classList.add("hidden");
+    overLay.classList.add("hidden");
+}
 
 buttons.forEach(button => {
-    button.addEventListener("click", function () {
-        playRound(button.id, getComputerChoice());
-        // console.log(playRound(button.id, getComputerChoice()));
-        let result = playRound(button.id, getComputerChoice());
-        console.log(result);
     
+    button.addEventListener("click", function() {
+        let playerSelection = button.id;
+        console.log(getComputerChoice());
+        playRound( playerSelection, computerSelection);
 
-        if (result === paperWin || result === rockWin || result === scissorsWin) {
-            player.textContent = `Player score: ${playerScore += 1}`
-            scoreMessage.textContent = `Nice! ${result}`;
+        if (playerScore === 5) {
+           openModal();
+           modal.insertBefore(winningMessage, resetGame);
+           resetGame.addEventListener("click", closeModal);
+           resetGame.addEventListener("click", ()=> {
+            location.reload();
+           });
         }
-        else if(result === paperLoss || result === rockLoss || result === scissorsLoss) {
-            computer.textContent = `Computer score: ${computerScore += 1}`;
-            scoreMessage.textContent = `Oops! ${result}`;
+        else if(computerScore === 5) {
+            openModal();
+            modal.insertBefore(losingMessage, resetGame);
+            resetGame.addEventListener("click", closeModal);
+            resetGame.addEventListener("click", () => {
+            location.reload();
+           });
         }
-        else {
-            scoreMessage.textContent = `Oops! ${result}`;
-        };
-
-        if (playerScore === 5 || computer === 5 ) {
-            winningMessage.textContent = "You Win! Congratulations!";
-            const reset = document.createElement("button");
-            reset.id = "reset";
-            reset. textContent = "Reset";
-            body.appendChild(reset);
-            reset.addEventListener("click", function() {
-                player.textContent = `Player score : ${0}`;
-                computer.textContent = `Computer score : ${0}`;
-                
-            });
-            
-        }
-       
     });
-    
 });
 
- 
-// playerSelection = "Rock";
-// console.log(playRound(prompt("rock, paper or scissors?"), computerSelection));
-
-//  function game() {
-
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     let drawScore = 0;
-//     let overallWin = "You Win! Congratulation!";
-//     let overallLoss = "Damn! you've just lost to a computer! haha!";
-//     let overallDraw = "No Win! It's a draw! boo!"
-    
-
-//     for(let i = 0; i < 5; i++) {
-
-//         let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
-//         let computerSelection = getComputerChoice();
-
-//         playRound(playerSelection, computerSelection); 
-//         console.log(playerSelection);
-//         console.log(computerSelection); 
-//         console.log(playRound(playerSelection, computerSelection));
-
-//         if(playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-//             i -= 1;
-//             console.log(warning);
-//         }
-//         else if(playRound(playerSelection, computerSelection) === rockWin ||
-//             playRound(playerSelection, computerSelection) === paperWin ||
-//             playRound(playerSelection, computerSelection) === scissorsWin) {
-
-//                 playerScore += 1;      
-//                 console.log(playerScore);  
-                
-//             }
-//         else if(playRound(playerSelection, computerSelection) === rockLoss ||
-//                 playRound(playerSelection, computerSelection) === paperLoss ||
-//                 playRound(playerSelection, computerSelection) === scissorsLoss) {
-
-//                     computerScore += 1;
-                    
-//                     console.log(computerScore);
-//                 }
-//         else {
-         
-//             drawScore += 1;
-//             console.log(drawScore);
-//         }
-
-//     } 
-
-//     if (playerScore > computerScore) {
-//         return overallWin;
-//     }
-//     else if(playerScore < computerScore) {
-//         return overallLoss;
-//     }
-//     else {
-//         return overallDraw;
-//     }
-
-//  }
- 
-//  console.log(game());
