@@ -10,16 +10,19 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #18104e;
+    color: #f0f0f3;
+    background-color: #011f42;
     position: relative;
-    min-height: 100vh;
+    margin-top: 5%;
+    /* min-height: 100vh;  */
 }
 
 .modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.4rem;
+    align-items: center;
+    gap: 1rem;
     width: 450px;
     padding: 1.3rem;
     min-height: 250px;
@@ -29,7 +32,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 15px;
     z-index: 2;
-  }
+}
 
 .reset-game {
     display: inline-block;
@@ -42,26 +45,26 @@ body {
     text-align: center;
     font-size: 1em;
    
-  }
+}
 
-  .hidden {
+.hidden {
     display: none;
-  }
+}
 
-  .modal .flex {
+.modal .flex {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-  }
+}
 
-  .modal p {
+.modal p {
     font-size: 1.2rem;
     color: #ffffff;
     margin: 0.4rem 0 0.2rem;
-  }
+}
 
-  .overlay {
+.overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -72,5 +75,51 @@ body {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
     z-index: 1;
-  }
+}
+
+#container {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 2em;
+margin: 2em;
+}
+
+#score {
+
+}
+
+#player, #computer {
+
+}
+
+.end-message {
+
+}
+button {
+    
+
+}
+button :hover {
+
+}
+
+.para {
+    padding: 20px 120px;
+    margin: 2px 240px; 
+    font-style: italic;
+}
+
+img {
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+img :hover {
+    background-color: #9dc5f7;
+}
+
+
+
 

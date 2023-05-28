@@ -24,6 +24,9 @@ const title = document.createElement("h3");
 title.textContent = "Please choose your weapon";
 const body = document.querySelector("body");
 body.insertBefore(title, container);
+const para = document.querySelector("p");
+para.classList.add("para");
+
  
  
 let playerScore = 0;
@@ -43,10 +46,10 @@ let scoreMessage = document.createElement("p");
 body.insertBefore(scoreMessage, score);
 const winningMessage = document.createElement("p");
 winningMessage.classList.add("end-message");
-winningMessage.textContent = "You win! Congratulations on saving mankind!";
+winningMessage.textContent = `You won ${playerScore}:${computerScore}! Congratulations on saving mankind!`;
 const losingMessage = document.createElement("p");
 losingMessage.classList.add("end-message");
-losingMessage.textContent = "Damn! you have just lost to a computer. Now mankind is doomed all because of you!";
+losingMessage.textContent = `Damn! you have just lost ${computerScore}:${playerScore} to a computer. Now mankind is doomed all because of you!`;
 
 
 
@@ -109,6 +112,7 @@ buttons.forEach(button => {
 
         if (playerScore === 5) {
            openModal();
+           winningMessage.textContent = `You won ${playerScore}:${computerScore}! Congratulations on saving mankind!`;
            modal.insertBefore(winningMessage, resetGame);
            resetGame.addEventListener("click", closeModal);
            resetGame.addEventListener("click", ()=> {
@@ -117,6 +121,7 @@ buttons.forEach(button => {
         }
         else if(computerScore === 5) {
             openModal();
+            losingMessage.textContent = `Damn! you have just lost ${computerScore}:${playerScore} to a computer. Now mankind is doomed all because of you!`;
             modal.insertBefore(losingMessage, resetGame);
             resetGame.addEventListener("click", closeModal);
             resetGame.addEventListener("click", () => {
