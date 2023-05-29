@@ -117,14 +117,15 @@ function closeModal() {                 //function to close modal.
     modal.classList.add("hidden");
     overLay.classList.add("hidden");
 }
-
+//add a click event listener to every choice button.
 buttons.forEach(button => {
     
-    button.addEventListener("click", function() { //add a click event listener to every choice button.
+    button.addEventListener("click", function() { 
         let playerSelection = button.id;
         playRound( playerSelection, getComputerChoice());
 
-        if (playerScore === 5) {    //open modal and display winning message if player gets 5 points first.
+        //open modal and display winning message if player gets 5 points first.
+        if (playerScore === 5) {    
            openModal();
            winningMessage.textContent = `You won ${playerScore}:${computerScore}! Congratulations on saving mankind!`;
            modal.insertBefore(winningMessage, resetGame);
@@ -133,13 +134,14 @@ buttons.forEach(button => {
             location.reload();
            });
         }
-        else if(computerScore === 5) {  //open modal and display the losing message if computer gets 5 points first.
+        //open modal and display the losing message if computer gets 5 points first.
+        else if(computerScore === 5) {  
             openModal();
             losingMessage.textContent = `Damn! you have just lost ${computerScore}:${playerScore} to a computer. Now mankind is doomed all because of you!`;
             modal.insertBefore(losingMessage, resetGame);
             resetGame.addEventListener("click", closeModal); // close modal and reset the game.
-            location.reload();
-            resetGame.addEventListener("click", () => {     
+            resetGame.addEventListener("click", () => { 
+                location.reload();    
            });
         }
     });
