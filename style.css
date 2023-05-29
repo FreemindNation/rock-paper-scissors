@@ -14,7 +14,7 @@ body {
     background-color: #011f42;
     position: relative;
     margin-top: 5%;
-    /* min-height: 100vh;  */
+    
 }
 
 .modal {
@@ -41,10 +41,16 @@ body {
     background-color: #031a44de;
     color: white;
     width: 150px;
+    height: 80px;
     border-radius: 10px;
     text-align: center;
     font-size: 1em;
    
+}
+
+.reset-game:hover {
+    color: #011f42;
+    background: #69b4f1;
 }
 
 .hidden {
@@ -72,7 +78,7 @@ body {
     right: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(26, 4, 4, 0.5);
     backdrop-filter: blur(3px);
     z-index: 1;
 }
@@ -81,27 +87,56 @@ body {
 display: flex;
 justify-content: center;
 align-items: center;
+background-color: #011f42;
 gap: 2em;
 margin: 2em;
 }
 
 #score {
-
+display: flex;
+justify-content: flex-end;
+gap: 8em;
+font-weight: 800;
+font-size: larger;
+margin-top: 4em;
 }
 
 #player, #computer {
-
+    font-size: xx-large;
 }
 
-.end-message {
+.draw-message {
+    font-size: x-large;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+}
+.win-message {
+    font-size: x-large;
+    font-weight: 900;
+    font-style: italic;
+    color: green;
+}
+
+.lose-message {
+    font-size: x-large;
+    font-weight: 900;
+    font-style: italic;
+    color: red;
+}
+
+#container button {
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;  
 
 }
-button {
-    
-
+button:hover {
+    background-color: #9dc5f7;
 }
-button :hover {
 
+button:active {
+    background-color: #68f5c6;
 }
 
 .para {
@@ -111,14 +146,13 @@ button :hover {
 }
 
 img {
-    border-radius: 10px;
-    width: 200px;
-    height: 200px;
+    
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
 }
 
-img :hover {
-    background-color: #9dc5f7;
-}
 
 
 
